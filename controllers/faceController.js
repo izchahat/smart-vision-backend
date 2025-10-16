@@ -13,9 +13,9 @@ exports.detectFromUpload = async (req, res) => {
     form.append('image', fs.createReadStream(imagePath));
 
     const pyUrl = process.env.PY_FACE_SERVICE_URL || 'https://smart-vision-face-service.onrender.com/detect';
-    const response = await axios.post(pyUrl, form, { 
+        const response = await axios.post(pyUrl, form, {
       headers: form.getHeaders(),
-      timeout: 30000 // 30 seconds timeout
+      timeout: 30000 // 30 seconds
     });
 
     const { faces } = response.data || { faces: [] };
